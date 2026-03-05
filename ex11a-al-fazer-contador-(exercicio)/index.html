@@ -48,11 +48,53 @@
 
   <!-- Script JavaScript embutido na página -->
   <script>
+    // Seleciona os elementos do DOM
+    const timerDisplay = document.getElementById('timer');
+    const startButton = document.getElementById('startButton');
+    const pauseButton = document.getElementById('pauseButton');
+    const resetButton = document.getElementById('resetButton');
 
+    // Variáveis do temporizador
+    let counter = 0; // Contador começa em 0
+    let intervalId = null; // ID do intervalo para controlar o temporizador
 
-    // 1ª Digitação (Resolva aqui o exercício)
+    // Função para atualizar o display do temporizador
+    function updateDisplay() {
+      timerDisplay.textContent = counter;
+    }
 
+    // Função para iniciar o temporizador
+    function startTimer() {
+      if (intervalId === null) { // Só inicia se não estiver rodando
+        intervalId = setInterval(() => {
+          counter++; // Incrementa o contador a cada segundo
+          updateDisplay(); // Atualiza o display
+        }, 1000); // A cada 1000ms (1 segundo)
+      }
+    }
 
+    // Função para pausar o temporizador
+    function pauseTimer() {
+      if (intervalId !== null) {
+        clearInterval(intervalId); // Para o intervalo
+        intervalId = null; // Reseta o ID
+      }
+    }
+
+    // Função para resetar o temporizador
+    function resetTimer() {
+      pauseTimer(); // Para o temporizador
+      counter = 0; // Zera o contador
+      updateDisplay(); // Atualiza o display
+    }
+
+    // Adiciona eventos de clique aos botões
+    startButton.addEventListener('click', startTimer);
+    pauseButton.addEventListener('click', pauseTimer);
+    resetButton.addEventListener('click', resetTimer);
+
+    // Inicializa o display
+    updateDisplay();
   </script>
 </body>
 </html>
