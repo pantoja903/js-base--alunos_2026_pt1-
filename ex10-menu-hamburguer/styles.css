@@ -1,0 +1,103 @@
+/* Reset básico */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+/* Fonte padrão */
+body {
+  font-family: Arial, sans-serif;
+}
+
+/* Barra de navegação */
+nav {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1rem 2rem;
+  background-color: #333;
+}
+
+/* Ícone hambúrguer */
+.menu-icon {
+  display: none;
+  font-size: 2rem;
+  color: white;
+  cursor: pointer;
+}
+
+/* Lista do menu */
+.nav-list {
+  display: flex;
+  list-style: none;
+  margin-left: auto;
+}
+
+/* Itens */
+.nav-list li {
+  margin-left: 2rem;
+}
+
+/* Links */
+.nav-list a {
+  color: white;
+  text-decoration: none;
+  font-size: 1rem;
+}
+/* Criar uma animação */
+@keyframes abrirMenu {
+  from {
+    opacity: 0;
+    transform: translateY(-20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* animação de deslizaar para esquerda e para direita */
+@keyframes deslizarDireita {
+  from {transform: translateX(-100%);}
+  to {transform: translateX(0);}
+}
+/* Aparecer com zoom */
+@keyframes zoom {
+  from {transform: scaleY(0); transform-origin: top;}
+  to {transform: scaleY(1); transform-origin: top;}
+}
+
+/* ---------- MOBILE ---------- */
+
+@media (max-width: 768px) {
+
+  /* Mostra o hamburguer */
+  .menu-icon {
+    display: block;
+  }
+
+  /* Esconde o menu */
+  .nav-list {
+    display: none;
+    flex-direction: column;
+    position: absolute;
+    top: 60px;
+    left: 0;
+    width: 100%;
+    background-color: #333;
+    animation: abrirMenu 0.3s ease-out;
+  }
+
+  .nav-list li {
+    margin: 1rem 0;
+    text-align: center;
+  }
+
+  /* Classe ativada pelo JS */
+  .nav-list.active {
+    display: flex;  /* Exibe o menu quando a classe "active" é adicionada */
+    animation: deslizarDireita 1.5s ease forwards; /* Animação de abertura do menu */
+  }
+
+}

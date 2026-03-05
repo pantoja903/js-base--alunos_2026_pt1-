@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Exercício 5: Animação Simples</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+    }
+
+    .track {
+      margin: 20px 0;
+      padding: 20px;
+      border: 2px solid #333;
+      background-color: #f0f0f0;
+      position: relative;
+    }
+
+    .racer {
+      width: 100px;
+      height: 100px;
+      position: relative;
+      margin: 20px 0;
+    }
+
+    #myDiv {
+      background-color: lightgreen;
+    }
+
+    #myDiv2 {
+      background-color: lightcoral;
+    }
+
+    .finish-line {
+      position: absolute;
+      width: 4px;
+      height: 100%;
+      background: linear-gradient(90deg, black 25%, white 25%, white 50%, black 50%, black 75%, white 75%);
+      background-size: 20px 20px;
+      left: 1000px;
+      top: 0;
+    }
+
+    .celebration {
+      display: none;
+      position: fixed;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+      color: white;
+      padding: 40px 60px;
+      border-radius: 20px;
+      font-size: 36px;
+      font-weight: bold;
+      text-align: center;
+      z-index: 1000;
+      box-shadow: 0 10px 40px rgba(0,0,0,0.3);
+      animation: pop 0.5s ease-out;
+    }
+
+    @keyframes pop {
+      0% {
+        transform: translate(-50%, -50%) scale(0);
+      }
+      50% {
+        transform: translate(-50%, -50%) scale(1.1);
+      }
+      100% {
+        transform: translate(-50%, -50%) scale(1);
+      }
+    }
+  </style>
+</head>
+<body>
+  <h1>🏁 Corrida de Quadrados</h1>
+
+  <div class="track">
+    <h2>Quadrado Verde</h2>
+    <button id="myButton">Mover</button>
+    <div id="myDiv" class="racer"></div>
+    <div class="finish-line"></div>
+  </div>
+
+  <div class="track">
+    <h2>Quadrado Vermelho</h2>
+    <button id="myButton2">Mover</button>
+    <div id="myDiv2" class="racer"></div>
+    <div class="finish-line"></div>
+  </div>
+
+  <div id="celebration" class="celebration">🎉 Parabéns! Você chegou! 🎉</div>
+
+  <!-- Script JavaScript embutido na página -->
+  <script>
+    const finishLine = 1000;
+    const celebration = document.querySelector('#celebration');
+
+    function showCelebration(color) {
+      celebration.textContent = `🎉 Parabéns! ${color} chegou primeiro! 🎉`;
+      celebration.style.display = 'block';
+      setTimeout(() => {
+        celebration.style.display = 'none';
+      }, 3000);
+    }
+
+    // Primeiro quadrado (Verde)
+    const button = document.querySelector('#myButton');
+    const div = document.querySelector('#myDiv');
+    let position = 0;
+
+    function moveGreen() {
+      position += 50;
+      div.style.left = `${position}px`;
+      
+      if (position >= finishLine) {
+        showCelebration('Quadrado Verde');
+      }
+    }
+
+    button.addEventListener('click', moveGreen);
+
+    // Segundo quadrado (Vermelho)
+    const button2 = document.querySelector('#myButton2');
+    const div2 = document.querySelector('#myDiv2');
+    let position2 = 0;
+
+    function moveRed() {
+      position2 += 50;
+      div2.style.left = `${position2}px`;
+      
+      if (position2 >= finishLine) {
+        showCelebration('Quadrado Vermelho');
+      }
+    }
+
+    button2.addEventListener('click', moveRed);
+
+    // Controle por teclado
+    document.addEventListener('keydown', (event) => {
+      const key = event.key.toLowerCase();
+      
+      if (key === 'm') {
+        moveGreen();
+      } else if (key === 'z') {
+        moveRed();
+      }
+    });
+  </script>
+</body>
+</html>

@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>html.ez</title>
+</head>
+<body>
+    <button id="temaBtn">Trocar tema</button>
+    <p id="texto">Pagina da chefia ignacio.</p>
+     
+    <style> #texto {text-align: center;}</style>
+
+    <script>
+        const btn = document.getElementById('temaBtn');
+        const body = document.body;
+        const texto = document.getElementById('texto');
+
+        // inicia no modo claro (escuro = false)
+        let dark = false;
+
+        function updateTema() {
+            if (dark) {
+                body.style.backgroundColor = 'white';
+                texto.style.color = 'black';
+                btn.textContent = 'Modo escuro';
+            } else {
+                body.style.backgroundColor = 'black';
+                texto.style.color = 'white';
+                btn.textContent = 'Modo claro';
+            }
+        }
+
+        btn.addEventListener('click', () => {
+            dark = !dark;
+            updateTema();
+        });
+
+        // aplica primeira vez
+        updateTema();
+    </script>
+</body>
+</html>

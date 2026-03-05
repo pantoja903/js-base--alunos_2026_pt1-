@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Contador de Cliques</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      text-align: center;
+      padding-top: 50px;
+      transition: background-color 0.3s;
+    }
+    #counter {
+      font-size: 48px;
+      margin-bottom: 20px;
+    }
+    #clickButton {
+      padding: 10px 20px;
+      font-size: 18px;
+    }
+  </style>
+</head>
+<body>
+  <div id="counter">0</div>
+  <button id="clickButton">Clique aqui</button>
+
+  <script>
+    const counterEl = document.getElementById('counter');
+    const button = document.getElementById('clickButton');
+    let count = 0;
+
+    function updateBackground() {
+      if (count % 2 === 0) {
+        document.body.style.backgroundColor = 'green';
+      } else {
+        document.body.style.backgroundColor = 'red';
+      }
+    }
+
+    button.addEventListener('click', () => {
+      count++;
+      counterEl.textContent = count;
+      updateBackground();
+    });
+  </script>
+</body>
+</html>

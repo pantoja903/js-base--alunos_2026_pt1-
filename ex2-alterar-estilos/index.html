@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Alterando estilos com o Dom</title>
+    <!-- CSS Interno -->
+     <style>
+        #minhaDiv {
+            width: 200px;
+            height: 200px;
+            background-color: lightblue;
+            margin-top: 20px;
+        }
+    </style>
+
+</head>
+<body>
+    <!-- Botão para mudar a cor da div -->
+     <button id="meuBotão">Mudar Cor</button>
+
+     <!-- Div que terá sua cor de fundo alterada via DOM no JS -->
+      <div id="minhaDiv"></div>
+
+      <!-- JS interno -->
+       <script>
+        // Seleção (Botão e Div) usando DOM no JS
+        const Botão = document.querySelector('#meuBotão')
+        const div = document.querySelector('#minhaDiv')
+
+        // Adição de evento (Clique) para monitorar
+        Botão.addEventListener('click',() => {
+            // Verificar cor atual e troca entre (lightblue e lightcoral)
+            if (div.style.backgroundColor === 'lightblue') {
+                div.style.backgroundColor = 'lightcoral';
+            } else {
+                div.style.backgroundColor = 'lightblue';
+            }
+        })
+       </script>
+    
+</body>
+</html>
