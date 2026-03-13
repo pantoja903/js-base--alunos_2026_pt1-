@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Informações de Endereço</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <h1>Informações de Endereço</h1>
+    <form>
+        <label for="cep">CEP:</label>
+        <input type="text" id="cep" name="cep" placeholder="Digite o CEP">
+        <button type="button" onclick="buscarCEP()">Buscar CEP</button>
+
+        <label for="endereco">Endereço:</label>
+        <input type="text" id="endereco" name="endereco" placeholder="Digite o endereço">
+
+        <label for="bairro">Bairro:</label>
+        <input type="text" id="bairro" name="bairro" placeholder="Digite o bairro">
+
+        <label for="numero">Número da Casa:</label>
+        <input type="text" id="numero" name="numero" placeholder="Digite o número">
+
+        <label for="tipo">Tipo de Residência:</label>
+        <select id="tipo" name="tipo">
+            <option value="">Selecione</option>
+            <option value="casa">Casa</option>
+            <option value="apartamento">Apartamento</option>
+        </select>
+
+        <div id="apartamentoCampos" style="display: none;">
+            <label for="torre">Torre:</label>
+            <input type="text" id="torre" name="torre" placeholder="Digite a torre">
+
+            <label for="apartamento">Apartamento:</label>
+            <input type="text" id="apartamento" name="apartamento" placeholder="Digite o apartamento">
+        </div>
+
+        <button type="submit">Enviar</button>
+    </form>
+    <script src="script.js"></script>
+</body>
+</html>
